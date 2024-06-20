@@ -1,16 +1,13 @@
-import Component from '@glimmer/component';
-import { modifier } from 'ember-modifier';
-import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
-import { on } from '@ember/modifier';
-import { fn } from '@ember/helper';
+import Component from "@glimmer/component";
+import { modifier as emberModifier } from "ember-modifier";
+import { tracked } from "@glimmer/tracking";
+import { action } from "@ember/object";
+import { on } from "@ember/modifier";
+import { fn } from "@ember/helper";
 
-const myModifier = modifier(
-  (element, [value]) => {
-    console.log('running modifier', value);
-  },
-  { eager: false }
-);
+const myModifier = emberModifier((element, [value]) => {
+  console.log("running modifier", value);
+});
 
 export default class Foo extends Component {
   @tracked isOpen = false;
@@ -18,20 +15,15 @@ export default class Foo extends Component {
 
   @action
   open() {
-    console.log('open');
+    console.log("open");
     this.isOpen = true;
   }
 
   @action
   close() {
-    console.log('close');
+    console.log("close");
     this.isOpen = false;
-  }
-
-  @action
-  setValue(value) {
-    console.log('setValue');
-    this.value = value;
+    this.value = "foo";
   }
 
   <template>
@@ -47,7 +39,6 @@ export default class Foo extends Component {
       type="button"
       class="close"
       {{on "click" this.close}}
-      {{on "click" (fn this.setValue "foo")}}
     >
       Close
     </button>
