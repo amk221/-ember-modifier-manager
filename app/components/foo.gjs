@@ -23,12 +23,7 @@ export default class Foo extends Component {
   close() {
     console.log("close");
     this.isOpen = false;
-  }
-
-  @action
-  setValue(value) {
-    console.log("setValue");
-    this.value = value;
+    this.value = "foo";
   }
 
   <template>
@@ -44,7 +39,6 @@ export default class Foo extends Component {
       type="button"
       class="close"
       {{on "click" this.close}}
-      {{on "click" (fn this.setValue "foo")}}
     >
       Close
     </button>
