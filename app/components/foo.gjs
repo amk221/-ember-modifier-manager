@@ -5,12 +5,9 @@ import { action } from "@ember/object";
 import { on } from "@ember/modifier";
 import { fn } from "@ember/helper";
 
-const myModifier = emberModifier(
-  (element, [value]) => {
-    console.log("running modifier", value);
-  },
-  { eager: false },
-);
+const myModifier = emberModifier((element, [value]) => {
+  console.log("running modifier", value);
+});
 
 export default class Foo extends Component {
   @tracked isOpen = false;
